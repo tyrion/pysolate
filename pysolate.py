@@ -70,7 +70,9 @@ def find_python_versions():
         for entry in filter(exc_pat.match, entries):
             py = path.join(dir, entry)
             try:
-                out = subprocess.check_output([py, "-V"])
+                out = subprocess.check_output(
+                    [py, "-V"], stderr=subprocess.STDOUT
+                )
             except OSError:
                 continue
 

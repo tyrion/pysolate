@@ -15,7 +15,7 @@ _u = "https://raw.githubusercontent.com/tyrion/pysolate/master/pysolate.py"
 _, _c = os.path.exists(_f) or urlretrieve(_u, _f), open(_f).read()
 
 # 3) Ensure we are not getting hacked
-_h = "8fca8cafe236be350fcc029b22a3f60a8a65e9957e358efc9ded0afd90c4e9fd"
+_h = "a62bb50cd98da1995897a9f97a5b8549a1e0090e67fff970f8025db7b1b45c82"
 assert hashlib.sha256(_c.encode("utf-8")).hexdigest() == _h, "SHA256 Mismatch"
 
 # 4) Configure and execute pysolate

@@ -113,11 +113,9 @@ def run(args, **kwds):
         kwds["stdin"] = kwds["stdout"] = kwds["stderr"] = subprocess.DEVNULL
 
     try:
-        subprocess.call(args, **kwds)
+        return subprocess.call(args, **kwds) == 0
     except OSError:
         return False
-    else:
-        return True
 
 
 def ensure_venv(venv, dependencies=()):
@@ -141,6 +139,7 @@ def ensure_venv(venv, dependencies=()):
                 "Failed to create venv. Ensure Py > 3.3 or virtualenv is"
                 " installed"
             )
+            sys.exit(1)
         if dependencies:
             logger.info("  Installing deps")
             deps = [
